@@ -7,472 +7,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #0a0b0d;
-    --bg2: #111318;
-    --bg3: #181c24;
-    --accent: #e8a020;
-    --accent2: #c47a10;
-    --red: #c0392b;
-    --text: #d4d8e0;
-    --muted: #7a8090;
-    --border: #2a2e3a;
+    --bg: #0a0b0d; --bg2: #111318; --bg3: #181c24;
+    --accent: #e8a020; --accent2: #c47a10;
+    --red: #c0392b; --text: #d4d8e0; --muted: #7a8090; --border: #2a2e3a;
   }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,11,13,0.95);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 56px;
-    backdrop-filter: blur(8px);
-  }
-
-  .logo {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--accent);
-    text-transform: uppercase;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); pointer-events: none; z-index: 9999; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(10,11,13,0.95); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 56px; backdrop-filter: blur(8px); }
+  .logo { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
   .logo span { color: var(--text); }
-
-  nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  nav ul a {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
+  nav ul { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  nav ul a { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
   nav ul a:hover { color: var(--accent); }
-
-  .nav-admin-btn {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border: 1px solid var(--accent);
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-    white-space: nowrap;
-  }
-
-  .nav-admin-btn:hover {
-    background: var(--accent);
-    color: #000;
-  }
-
-  .nav-admin-btn {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border: 1px solid var(--accent);
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-    white-space: nowrap;
-  }
-
-  .nav-admin-btn:hover {
-    background: var(--accent);
-    color: #000;
-  }
-
-  .hero {
-    position: relative;
-    min-height: 520px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    overflow: hidden;
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  .hero-glow {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(232,160,32,0.06) 0%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .hero-tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    position: relative;
-  }
-
-  .hero h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(52px, 10vw, 96px);
-    font-weight: 700;
-    letter-spacing: 8px;
-    line-height: 1;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: 0 0 40px rgba(232,160,32,0.2);
-    margin-bottom: 0.5rem;
-    position: relative;
-  }
-
+  .admin-btn { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border: 1px solid var(--red); background: transparent; color: var(--red); cursor: pointer; transition: all 0.2s; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); }
+  .admin-btn:hover { background: var(--red); color: #fff; }
+  .hero { position: relative; min-height: 520px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px); background-size: 40px 40px; }
+  .hero-glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(232,160,32,0.06) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .hero-tag { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; opacity: 0.8; position: relative; }
+  .hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(52px, 10vw, 96px); font-weight: 700; letter-spacing: 8px; line-height: 1; text-transform: uppercase; color: #fff; text-shadow: 0 0 40px rgba(232,160,32,0.2); margin-bottom: 0.5rem; position: relative; }
   .hero h1 .accent { color: var(--accent); }
-
-  .hero-sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 3px;
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 1rem;
-    position: relative;
-  }
-
-  .btn {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 28px;
-    border: 1px solid var(--accent);
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.2s;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  }
-
-  .btn:hover {
-    background: var(--accent);
-    color: #000;
-  }
-
-  .btn-solid {
-    background: var(--accent);
-    color: #000;
-  }
-
-  .btn-solid:hover {
-    background: var(--accent2);
-    border-color: var(--accent2);
-  }
-
-  .stats-bar {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
-    padding: 1.2rem 3rem;
-    text-align: center;
-    border-right: 1px solid var(--border);
-  }
-
+  .hero-sub { font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--muted); letter-spacing: 3px; margin-bottom: 2.5rem; position: relative; }
+  .hero-btns { display: flex; gap: 1rem; position: relative; }
+  .btn { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 10px 28px; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
+  .btn:hover { background: var(--accent); color: #000; }
+  .btn-solid { background: var(--accent); color: #000; }
+  .btn-solid:hover { background: var(--accent2); border-color: var(--accent2); }
+  .stats-bar { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat-item { padding: 1.2rem 3rem; text-align: center; border-right: 1px solid var(--border); }
   .stat-item:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  section {
-    padding: 4rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .section-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: var(--accent);
-    text-transform: uppercase;
-  }
-
-  .server-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 1.5rem;
-    position: relative;
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-    margin-bottom: 1rem;
-    transition: border-color 0.2s;
-  }
-
+  .stat-num { font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+  section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .section-title { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; }
+  .server-card { background: var(--bg2); border: 1px solid var(--border); padding: 1.5rem; position: relative; clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px)); margin-bottom: 1rem; transition: border-color 0.2s; }
   .server-card:hover { border-color: var(--accent); }
-
-  .server-card::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 0 16px 16px 0;
-    border-color: transparent var(--accent) transparent transparent;
-  }
-
-  .server-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-
-  .server-name {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  .status-badge {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: #2ecc71;
-    letter-spacing: 1px;
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #2ecc71;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .server-ip {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 14px;
-    color: var(--accent);
-    background: rgba(232,160,32,0.08);
-    display: inline-block;
-    padding: 6px 14px;
-    border: 1px solid rgba(232,160,32,0.2);
-    margin-bottom: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    user-select: all;
-  }
-
+  .server-card::before { content: ''; position: absolute; top: 0; right: 0; width: 0; height: 0; border-style: solid; border-width: 0 16px 16px 0; border-color: transparent var(--accent) transparent transparent; }
+  .server-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .server-name { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+  .status-badge { display: flex; align-items: center; gap: 6px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #2ecc71; letter-spacing: 1px; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #2ecc71; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .server-ip { font-family: 'Share Tech Mono', monospace; font-size: 14px; color: var(--accent); background: rgba(232,160,32,0.08); display: inline-block; padding: 6px 14px; border: 1px solid rgba(232,160,32,0.2); margin-bottom: 1rem; cursor: pointer; transition: background 0.2s; user-select: all; }
   .server-ip:hover { background: rgba(232,160,32,0.15); }
-
-  .server-meta {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .meta-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  .meta-val {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .about-cell {
-    background: var(--bg2);
-    padding: 1.5rem;
-  }
-
-  .about-icon {
-    font-size: 24px;
-    margin-bottom: 0.8rem;
-    color: var(--accent);
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
-
-  .about-cell h3 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .about-cell p {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .connect-section {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .connect-section p {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-  }
-
-  .connect-ip-big {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 4px;
-    margin-bottom: 1.5rem;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    border-top: 1px solid var(--border);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--muted);
-  }
-
+  .server-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+  .meta-val { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); }
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .about-cell { background: var(--bg2); padding: 1.5rem; }
+  .about-icon { font-size: 24px; margin-bottom: 0.8rem; color: var(--accent); font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 2px; }
+  .about-cell h3 { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 2px; color: #fff; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .about-cell p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .connect-section { text-align: center; padding: 3rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .connect-section p { font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 3px; color: var(--muted); margin-bottom: 0.5rem; text-transform: uppercase; }
+  .connect-ip-big { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; color: var(--accent); letter-spacing: 4px; margin-bottom: 1.5rem; }
+  footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border); font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--muted); }
   footer span { color: var(--accent); }
+
+  /* LOGIN MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--bg2); border: 1px solid var(--red); width: 360px; position: relative; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)); }
+  .modal::before { content: ''; position: absolute; top: 0; right: 0; width: 0; height: 0; border-style: solid; border-width: 0 20px 20px 0; border-color: transparent var(--red) transparent transparent; }
+  .modal-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .modal-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: var(--red); text-transform: uppercase; }
+  .modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 0; transition: color 0.2s; }
+  .modal-close:hover { color: var(--red); }
+  .modal-body { padding: 1.5rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 6px; }
+  .form-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text); font-family: 'Share Tech Mono', monospace; font-size: 13px; padding: 10px 14px; outline: none; transition: border-color 0.2s; }
+  .form-input:focus { border-color: var(--red); }
+  .form-error { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--red); margin-top: 0.5rem; display: none; }
+  .form-error.show { display: block; }
+  .login-btn { width: 100%; margin-top: 1rem; font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 12px; border: 1px solid var(--red); background: var(--red); color: #fff; cursor: pointer; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
+  .login-btn:hover { background: transparent; color: var(--red); }
 </style>
 </head>
 <body>
@@ -484,8 +97,30 @@
     <li><a href="#hakkimizda">Hakkımızda</a></li>
     <li><a href="#katil">Katıl</a></li>
   </ul>
-  <a href="/panel.php" class="nav-admin-btn">🔐 Yetkili Girişi</a>
+  <button class="admin-btn" onclick="document.getElementById('loginModal').classList.add('active')">🔐 Yetkili Girişi</button>
 </nav>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">// Yetkili Girişi</div>
+      <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('active')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Kullanıcı Adı</label>
+        <input type="text" class="form-input" id="loginUser" placeholder="admin">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Şifre</label>
+        <input type="password" class="form-input" id="loginPass" placeholder="••••••••">
+      </div>
+      <div class="form-error" id="loginError">Kullanıcı adı veya şifre hatalı!</div>
+      <button class="login-btn" onclick="doLogin()">Giriş Yap</button>
+    </div>
+  </div>
+</div>
 
 <div class="hero">
   <div class="hero-grid"></div>
@@ -500,57 +135,25 @@
 </div>
 
 <div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num">7/24</div>
-    <div class="stat-label">Aktif Sunucu</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">0</div>
-    <div class="stat-label">Ping Limiti</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">128</div>
-    <div class="stat-label">Tickrate</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">TR</div>
-    <div class="stat-label">Sunucu Lokasyonu</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">7/24</div><div class="stat-label">Aktif Sunucu</div></div>
+  <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Ping Limiti</div></div>
+  <div class="stat-item"><div class="stat-num">128</div><div class="stat-label">Tickrate</div></div>
+  <div class="stat-item"><div class="stat-num">TR</div><div class="stat-label">Sunucu Lokasyonu</div></div>
 </div>
 
 <section id="sunucular">
-  <div class="section-header">
-    <div class="section-line"></div>
-    <div class="section-title">// Sunucularımız</div>
-    <div class="section-line"></div>
-  </div>
-
+  <div class="section-header"><div class="section-line"></div><div class="section-title">// Sunucularımız</div><div class="section-line"></div></div>
   <div class="server-card">
     <div class="server-top">
       <div class="server-name">ASKi | Competitive</div>
-      <div class="status-badge">
-        <div class="status-dot"></div>
-        Online
-      </div>
+      <div class="status-badge"><div class="status-dot"></div>Online</div>
     </div>
     <div class="server-ip" title="Kopyalamak için tıkla">connect askiclan.com:27015</div>
     <div class="server-meta">
-      <div class="meta-item">
-        <div class="meta-label">Harita</div>
-        <div class="meta-val">de_dust2</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Oyuncular</div>
-        <div class="meta-val">0/16</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Mod</div>
-        <div class="meta-val">Competitive</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Tickrate</div>
-        <div class="meta-val">128</div>
-      </div>
+      <div class="meta-item"><div class="meta-label">Harita</div><div class="meta-val">de_dust2</div></div>
+      <div class="meta-item"><div class="meta-label">Oyuncular</div><div class="meta-val">0/16</div></div>
+      <div class="meta-item"><div class="meta-label">Mod</div><div class="meta-val">Competitive</div></div>
+      <div class="meta-item"><div class="meta-label">Tickrate</div><div class="meta-val">128</div></div>
     </div>
   </div>
 </section>
@@ -562,51 +165,58 @@
 </div>
 
 <section id="hakkimizda">
-  <div class="section-header">
-    <div class="section-line"></div>
-    <div class="section-title">// Hakkımızda</div>
-    <div class="section-line"></div>
-  </div>
-
+  <div class="section-header"><div class="section-line"></div><div class="section-title">// Hakkımızda</div><div class="section-line"></div></div>
   <div class="about-grid">
-    <div class="about-cell">
-      <div class="about-icon">[01]</div>
-      <h3>Türk Topluluğu</h3>
-      <p>Tamamen Türkçe yönetim ve destek. Sorunlarını ana dilinde çöz, takım arkadaşlarınla rahat iletişim kur.</p>
-    </div>
-    <div class="about-cell">
-      <div class="about-icon">[02]</div>
-      <h3>Adil Oyun</h3>
-      <p>Sıfır tolerans hile politikası. Otomatik anti-cheat sistemi ve aktif admin ekibi ile temiz bir ortam.</p>
-    </div>
-    <div class="about-cell">
-      <div class="about-icon">[03]</div>
-      <h3>Yüksek Performans</h3>
-      <p>128 tickrate, düşük ping, yüksek FPS. Rekabetçi oyun için optimize edilmiş sunucu altyapısı.</p>
-    </div>
-    <div class="about-cell">
-      <div class="about-icon">[04]</div>
-      <h3>Aktif Topluluk</h3>
-      <p>Discord sunucumuzda etkinlikler, turnuvalar ve arkadaşlık ortamı. Clana katıl, ailenin parçası ol.</p>
-    </div>
+    <div class="about-cell"><div class="about-icon">[01]</div><h3>Türk Topluluğu</h3><p>Tamamen Türkçe yönetim ve destek. Sorunlarını ana dilinde çöz, takım arkadaşlarınla rahat iletişim kur.</p></div>
+    <div class="about-cell"><div class="about-icon">[02]</div><h3>Adil Oyun</h3><p>Sıfır tolerans hile politikası. Otomatik anti-cheat sistemi ve aktif admin ekibi ile temiz bir ortam.</p></div>
+    <div class="about-cell"><div class="about-icon">[03]</div><h3>Yüksek Performans</h3><p>128 tickrate, düşük ping, yüksek FPS. Rekabetçi oyun için optimize edilmiş sunucu altyapısı.</p></div>
+    <div class="about-cell"><div class="about-icon">[04]</div><h3>Aktif Topluluk</h3><p>Discord sunucumuzda etkinlikler, turnuvalar ve arkadaşlık ortamı. Clana katıl, ailenin parçası ol.</p></div>
   </div>
 </section>
 
 <section id="katil" style="text-align:center; padding-bottom: 5rem;">
-  <div class="section-header">
-    <div class="section-line"></div>
-    <div class="section-title">// Clana Katıl</div>
-    <div class="section-line"></div>
-  </div>
-  <p style="color: var(--muted); font-size: 14px; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8;">
-    ASKi ailesine katılmak için Discord sunucumuza gel, başvuru kanalından formu doldur. Yetkililer en kısa sürede seninle iletişime geçecek.
-  </p>
-  <a href="DISCORD_LINKINI_BURAYA_KOY" class="btn btn-solid" style="font-size: 15px; padding: 14px 40px;">Discord'a Katıl</a>
+  <div class="section-header"><div class="section-line"></div><div class="section-title">// Clana Katıl</div><div class="section-line"></div></div>
+  <p style="color: var(--muted); font-size: 14px; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8;">ASKi ailesine katılmak için Discord sunucumuza gel, başvuru kanalından formu doldur. Yetkililer en kısa sürede seninle iletişime geçecek.</p>
+  <a href="https://discord.com/invite/v8muv8EuZh" class="btn btn-solid" style="font-size: 15px; padding: 14px 40px;">Discord'a Katıl</a>
 </section>
 
-<footer>
-  <span>ASKi</span>clan &mdash; askiclan.com &mdash; 2025 &mdash; Tüm hakları saklıdır.
-</footer>
+<footer><span>ASKi</span>clan &mdash; askiclan.com &mdash; 2025 &mdash; Tüm hakları saklıdır.</footer>
 
+<script>
+function doLogin() {
+  const user = document.getElementById('loginUser').value;
+  const pass = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginError');
+  
+  if (!user || !pass) {
+    err.classList.add('show');
+    err.textContent = 'Lütfen tüm alanları doldurun!';
+    return;
+  }
+
+  fetch('api/login.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: user, password: pass })
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.success) {
+      window.location.href = 'panel.php';
+    } else {
+      err.classList.add('show');
+      err.textContent = 'Kullanıcı adı veya şifre hatalı!';
+    }
+  })
+  .catch(() => {
+    err.classList.add('show');
+    err.textContent = 'Sunucu hatası, tekrar deneyin!';
+  });
+}
+
+document.getElementById('loginPass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+</script>
 </body>
 </html>
