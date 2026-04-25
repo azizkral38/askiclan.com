@@ -82,6 +82,50 @@
 
   nav ul a:hover { color: var(--accent); }
 
+  .nav-admin-btn {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    white-space: nowrap;
+  }
+
+  .nav-admin-btn:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
+  .nav-admin-btn {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    white-space: nowrap;
+  }
+
+  .nav-admin-btn:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
   .hero {
     position: relative;
     min-height: 520px;
@@ -440,6 +484,7 @@
     <li><a href="#hakkimizda">Hakkımızda</a></li>
     <li><a href="#katil">Katıl</a></li>
   </ul>
+  <a href="/panel.php" class="nav-admin-btn">🔐 Yetkili Girişi</a>
 </nav>
 
 <div class="hero">
@@ -488,7 +533,7 @@
         Online
       </div>
     </div>
-    <div class="server-ip" title="Kopyalamak için tıkla">connect mg.askiclan.com:27015</div>
+    <div class="server-ip" title="Kopyalamak için tıkla">connect askiclan.com:27015</div>
     <div class="server-meta">
       <div class="meta-item">
         <div class="meta-label">Harita</div>
@@ -512,7 +557,7 @@
 
 <div class="connect-section">
   <p>// Hızlı Bağlantı</p>
-  <div class="connect-ip-big">mg.askiclan.com:27015</div>
+  <div class="connect-ip-big">askiclan.com:27015</div>
   <button class="btn btn-solid" style="font-size:15px; padding:14px 40px;" onclick="navigator.clipboard.writeText('connect askiclan.com:27015'); this.textContent='Kopyalandı!'; setTimeout(()=>this.textContent='Konsola Kopyala',2000)">Konsola Kopyala</button>
 </div>
 
@@ -524,7 +569,7 @@
   </div>
 
   <div class="about-grid">
-    <div class="about-cell">       
+    <div class="about-cell">
       <div class="about-icon">[01]</div>
       <h3>Türk Topluluğu</h3>
       <p>Tamamen Türkçe yönetim ve destek. Sorunlarını ana dilinde çöz, takım arkadaşlarınla rahat iletişim kur.</p>
@@ -556,14 +601,12 @@
   <p style="color: var(--muted); font-size: 14px; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8;">
     ASKi ailesine katılmak için Discord sunucumuza gel, başvuru kanalından formu doldur. Yetkililer en kısa sürede seninle iletişime geçecek.
   </p>
-  <a href="https://discord.com/invite/v8muv8EuZh" class="btn btn-solid" style="font-size: 15px; padding: 14px 40px;">Discord'a Katıl</a>
+  <a href="DISCORD_LINKINI_BURAYA_KOY" class="btn btn-solid" style="font-size: 15px; padding: 14px 40px;">Discord'a Katıl</a>
 </section>
 
 <footer>
   <span>ASKi</span>clan &mdash; askiclan.com &mdash; 2025 &mdash; Tüm hakları saklıdır.
 </footer>
-<a href="/Yetkili Giriş site.html" style="position:fixed; top:15px; right:15px; background:#c8aa6e; color:#0a0a0f; padding:8px 18px; border-radius:4px; font-weight:bold; text-decoration:none; z-index:9999; font-family:monospace;">
-  🔐 YETKİLİ GİRİŞİ
-</a>
+
 </body>
 </html>
